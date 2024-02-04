@@ -1,1 +1,0 @@
--L.. -lmlx -L%%%%/../lib -lXext -lX11 -lm
