@@ -56,7 +56,9 @@ SRC_CLEAN	= 	clean_cub3d.c \
 DIR_CLEAN	=	./scripts/cleaning/
 OBJ_CLEAN	=	${addprefix ${DIR_CLEAN}, ${SRC_CLEAN:.c=.o}}
 
-ALLOBJ		=	${OBJ_CLEAN} ${OBJ_CUB3} ${OBJ_ERROR} ${OBJ_INIT} ${OBJ_MAPP} ${OBJ_STR} ${OBJ_GNL} ${OBJ_FPR}
+
+ALLOBJ		=	${OBJ_CLEAN} ${OBJ_CUB3} ${OBJ_ERROR} ${OBJ_INIT} ${OBJ_MAPP} ${OBJ_STR} \
+				${OBJ_GNL} ${OBJ_FPR} 
 
 NAME		=	cub3d
 
@@ -66,7 +68,7 @@ LIBR		=	ranlib
 
 GCC			=	cc
 
-CFLAGS		=	-Wall -Wextra -Werror -g3
+CFLAGS		=	-Wall -Wextra -Werror
 
 all:		${NAME}
 
@@ -74,7 +76,10 @@ all:		${NAME}
 			${GCC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${ALLOBJ}
-			${GCC} ${CFLAGS} ${ALLOBJ} -o ${NAME}
+			${GCC} ${CFLAGS} ${ALLOBJ} -o ${NAME}  ./scripts/minilibx/libmlx_Linux.a -L./scripts/minilibx -lmlx -L%%%%/../lib -lXext -lX11 -lm
+
+miniib:		
+			@${MAKE} -C ./scripts/minilibx/
 
 clean:
 			@rm -f ${ALLOBJ}

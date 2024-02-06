@@ -2,6 +2,8 @@
 #include "../../headers/errors.h"
 #include "../../headers/string_work.h"
 
+#include "../../headers/mlx.h"
+
 int	main(int argc, char **argv)
 {
 	t_cub3d	*cub3d;
@@ -27,5 +29,8 @@ int	main(int argc, char **argv)
 		y++;
 	}
 	clean_cub3d(0, NULL);
+	window = mlx_init();
+	escreen = mlx_new_window(window, \
+		400, 400, "some");
 	return (0);
 }
