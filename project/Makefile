@@ -20,8 +20,8 @@ SRC_STR		= 	string0.c \
 				string2.c \
 				string3.c \
 				string4.c \
-				ft_convert_base.c \
-				ft_convert_base2.c
+				# ft_convert_base.c \
+				# ft_convert_base2.c
 DIR_STR		=	./scripts/string/
 OBJ_STR		=	${addprefix ${DIR_STR}, ${SRC_STR:.c=.o}}
 
@@ -32,7 +32,7 @@ SRC_MAPP	= 	map_parse.c \
 				fill_map_int.c \
 				argv_map.c \
 				check_required_texture.c \
-				final_check_map_parse.c
+				# final_check_map_parse.c
 DIR_MAPP	=	./scripts/map_parsing/
 OBJ_MAPP	=	${addprefix ${DIR_MAPP}, ${SRC_MAPP:.c=.o}}
 

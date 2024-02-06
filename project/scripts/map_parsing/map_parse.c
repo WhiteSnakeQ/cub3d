@@ -94,8 +94,8 @@ void	map_parse(char *f_name, t_map *map)
 		emergency_exit_cub3d(INVMAP);
 	if (!check_array_close(map))
 		emergency_exit_cub3d(NCLOSE);
-	if (!check_colors(map->textures_names))
-		emergency_exit_cub3d(NCLOSE);
+	// if (!check_colors(map->textures_names))
+	// 	emergency_exit_cub3d(NCLOSE);
 	// if (!check_textures_exist(map->textures_names))
 	// 	emergency_exit_cub3d(NCLOSE);
 }
