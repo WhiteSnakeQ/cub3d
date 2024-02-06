@@ -1,5 +1,6 @@
 #include "../../headers/map.h"
 #include "../../headers/string_work.h"
+#include "../../headers/map_id.h"
 #include "stdlib.h"
 
 t_list_int	*last_list_int(t_list_int *list)
@@ -23,7 +24,7 @@ t_list_int	*new_list_int(t_argv_map *argv)
 	new->row = malloc(sizeof(int) * (new->size + 1));
 	if (!new->row)
 		return (free(new), NULL);
-	new->row[new->size] = -5;
+	new->row[new->size] = ENDMAP;
 	new->str = ft_strdup(argv->argv, 0);
 	if (!new->str)
 		return (free(new->row), free(new), NULL);

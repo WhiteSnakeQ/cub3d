@@ -82,6 +82,8 @@ void	map_parse(char *f_name, t_map *map)
 	argv = make_argv(fd);
 	if (!fill_map_texture(&argv, map))
 		emergency_exit_map(MALLFAIL, argv);
+	if (!check_required_texture(map->textures_names))
+		emergency_exit_map(ENSFTEXTURE, argv);
 	if (!check_map_texture(map->textures_names))
 		emergency_exit_map(SAMETEXTURE, argv);
 	if (!fill_map_int(&argv, map))

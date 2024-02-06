@@ -17,7 +17,8 @@ OBJ_GNL		=	${addprefix ${DIR_GNL}, ${SRC_GNL:.c=.o}}
 
 SRC_STR		= 	string0.c \
 				string1.c \
-				string2.c
+				string2.c \
+				string3.c
 DIR_STR		=	./scripts/string/
 OBJ_STR		=	${addprefix ${DIR_STR}, ${SRC_STR:.c=.o}}
 
@@ -26,7 +27,8 @@ SRC_MAPP	= 	map_parse.c \
 				additional_map_fill_int.c \
 				fill_map_texture.c \
 				fill_map_int.c \
-				argv_map.c
+				argv_map.c \
+				check_required_texture.c
 DIR_MAPP	=	./scripts/map_parsing/
 OBJ_MAPP	=	${addprefix ${DIR_MAPP}, ${SRC_MAPP:.c=.o}}
 

@@ -1,4 +1,5 @@
 #include "../../headers/map.h"
+#include "../../headers/map_id.h"
 
 #include "../../headers/ft_printf.h"
 
@@ -9,7 +10,7 @@ static int	check_f_l_row(int *arr, int *arr2, int size)
 	i = 0;
 	while (i < size)
 	{
-		if ((arr[i] != 1 && arr[i] != -1) || (arr2[i] != 1 && arr2[i] != -1))
+		if ((arr[i] != WALL && arr[i] != EMPTY) || (arr2[i] != WALL && arr2[i] != EMPTY))
 			return (0);
 		i++;
 	}
@@ -23,9 +24,9 @@ static int	check_f_l_coll(t_map *map, int last_coll, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (map->map[i][0] != 1 && map->map[i][0] != -1)
+		if (map->map[i][0] != WALL && map->map[i][0] != EMPTY)
 			return (0);
-		if (map->map[i][last_coll] != 1 && map->map[i][last_coll] != -1)
+		if (map->map[i][last_coll] != WALL && map->map[i][last_coll] != EMPTY)
 			return (0);
 		i++;
 	}
@@ -45,9 +46,9 @@ static int	check_inside(t_map *map, int rows, int coll)
 		{
 			if (map->map[y][x] == 0)
 			{
-				if (map->map[y][x + 1] == -1 || map->map[y][x - 1] == -1)
+				if (map->map[y][x + 1] == EMPTY || map->map[y][x - 1] == EMPTY)
 					return (0);
-				if (map->map[y + 1][x] == -1 || map->map[y - 1][x] == -1)
+				if (map->map[y + 1][x] == EMPTY || map->map[y - 1][x] == EMPTY)
 					return (0);
 			}
 			x++;

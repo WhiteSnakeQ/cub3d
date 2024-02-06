@@ -13,6 +13,7 @@ int		ft_strslen(char **str);
 int		ft_strlen(const char *str);
 int		count_worlds(char *str);
 int		is_digit(char symb);
+int		ft_strcmp(const char *s1, const char *s2);
 
 void	*free_strings(char **strs);
 void	free_string(char **str);

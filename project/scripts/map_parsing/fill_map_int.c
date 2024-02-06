@@ -1,5 +1,6 @@
 #include "../../headers/map.h"
 #include "../../headers/string_work.h"
+#include "../../headers/map_id.h"
 #include "stdlib.h"
 
 static int	return_index(t_texture_map *texture, char letter)
@@ -21,14 +22,14 @@ static int	convert(t_list_int *list, t_map *map)
 	while (list->str[i])
 	{
 		if (list->str[i] == '0')
-			list->row[i] = 0;
+			list->row[i] = FLOOR;
 		else if (list->str[i] == '1')
-			list->row[i] = 1;
+			list->row[i] = WALL;
 		else if (list->str[i] == ' ')
-			list->row[i] = -1;
+			list->row[i] = EMPTY;
 		else
 			list->row[i] = return_index(map->textures_names, list->str[i]);
-		if (list->row[i] == -2)
+		if (list->row[i] == ERRMAP)
 			return (0);
 		i++;
 	}

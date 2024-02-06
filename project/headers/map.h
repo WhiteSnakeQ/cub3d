@@ -26,6 +26,7 @@ int			fill_map_texture(void **argv, t_map *map);
 int			fill_map_int(void **argv, t_map *map);
 int			check_array_close(t_map *map);
 int			check_map_texture(t_texture_map *textures);
+int			check_required_texture(t_texture_map *textures);
 
 void		clean_map(t_map **toclean);
 void		clean_t_map_argv(void *argv);

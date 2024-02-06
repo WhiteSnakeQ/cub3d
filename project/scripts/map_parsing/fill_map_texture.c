@@ -22,6 +22,8 @@ static t_texture_map	*new_texture_name(t_argv_map *argv, int index)
 	if (!new)
 		return (new);
 	new->argv = ft_split(argv->argv, ' ');
+	if (ft_strlen(new->argv[0]) >= 3)
+		return(free_strings(new->argv), free(new), NULL);
 	new->size = 2;
 	new->index = index;
 	new->next = (void *)0;
