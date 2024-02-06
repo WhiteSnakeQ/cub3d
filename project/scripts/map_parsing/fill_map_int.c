@@ -4,21 +4,23 @@
 #include "../../headers/map_id.h"
 #include "stdlib.h"
 
+#include "../../headers/ft_printf.h"
+
 static int	return_index(t_texture_map *texture, char letter)
 {
 	static int	hero = 0;
 	char		*str;
 
-	str = texture->argv[0];
 	while (texture)
 	{
-		if (!ft_strcmp("NO", str) || !ft_strcmp("SO", str))
+		str = texture->argv[0];
+		if (letter == 'N' || letter == 'S')
 		{
 			if (hero++ == 1)
 				return (ERRMAP);
 			return (HERO);
 		}
-		if (!ft_strcmp("EA", str) || !ft_strcmp("WE", str))
+		if (letter == 'E' || letter == 'W')
 		{
 			if (hero++ == 1)
 				return (ERRMAP);

@@ -9,6 +9,7 @@ typedef struct s_texture_map
 	char					**argv;
 	int						size;
 	int						index;
+	int						color;
 	struct s_texture_map	*next;
 }				t_texture_map;
 
@@ -27,6 +28,7 @@ int			fill_map_int(void **argv, t_map *map);
 int			check_array_close(t_map *map);
 int			check_map_texture(t_texture_map *textures);
 int			check_required_texture(t_texture_map *textures);
+int			check_colors(t_texture_map *textures);
 
 void		clean_map(t_map **toclean);
 void		clean_t_map_argv(void *argv);
