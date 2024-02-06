@@ -18,18 +18,18 @@ static t_texture_map	*new_texture_name(t_argv_map *argv, int index)
 {
 	t_texture_map	*new;
 
-	new = malloc(sizeof(t_argv_map));
+	new = malloc(sizeof(t_texture_map));
 	if (!new)
 		return (new);
 	new->argv = ft_split(argv->argv, ' ');
-	new->color = 0;
 	if (ft_strslen(new->argv) >= 3)
-		return(free_strings(new->argv), free(new), NULL);
+		return (free_strings(new->argv), free(new), NULL);
 	if (ft_strlen(new->argv[0]) >= 3)
-		return(free_strings(new->argv), free(new), NULL);
+		return (free_strings(new->argv), free(new), NULL);
 	new->size = 2;
+	new->color = 0;
 	new->index = index;
-	new->next = (void *)0;
+	new->next = NULL;
 	return (new);
 }
 

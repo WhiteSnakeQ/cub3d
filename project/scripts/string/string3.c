@@ -74,6 +74,7 @@ int	str_is_digit(char *str)
 {
 	int	i;
 
+	i = 0;
 	while (str[i])
 	{
 		if (!is_digit(str[i]))

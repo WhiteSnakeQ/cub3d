@@ -6,7 +6,7 @@ static int	check_texture(char *str, t_texture_map *textures)
 	while (textures)
 	{
 		if (!ft_strcmp(str, textures->argv[0]))
-			return(1);
+			return (1);
 		textures = textures->next;
 	}
 	return (0);

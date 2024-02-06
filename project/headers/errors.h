@@ -11,6 +11,9 @@
 # define NCLOSE "Map not closed!\n"
 # define SAMETEXTURE "Textures repid!\n"
 # define ENSFTEXTURE "Invalid number of textures!\n"
+# define INVCOLOR "Invalid colors!\n"
+# define UNEXTEXTURE "Texture path is invalid!\n"
+# define UNRECTEXTURE "Unrecognized texture!\n"
 
 void	emergency_exit_map(char *message, void *argv);
 int		emergency_exit_cub3d(char *message);

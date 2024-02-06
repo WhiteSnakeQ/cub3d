@@ -1,5 +1,6 @@
 #include "../../headers/map.h"
 #include "../../headers/string_work.h"
+#include "../../headers/map_id.h"
 #include "fcntl.h"
 
 #include "../../headers/ft_printf.h"
@@ -12,17 +13,17 @@ static int	rgb_transform(char **rgb, int _return)
 	char	*tmp_color;
 	char	*color;
 
-	r = ft_convert_base(rgb[0], "0123456789", "0123456789abcdefg");
-	g = ft_convert_base(rgb[1], "0123456789", "0123456789abcdefg");
-	b = ft_convert_base(rgb[2], "0123456789", "0123456789abcdefg");
-	if (!str_is_digit(r) || !str_is_digit(g) || !str_is_digit(b))
-		return (free_string(&r), free_string(&g), free_string(&b), 0);
-	if (ft_atoi(r) > 255 || ft_atoi(g) > 255 || ft_atoi(b) > 255)
-		return (free_string(&r), free_string(&g), free_string(&b), 0);
+	if (!str_is_digit(rgb[0]) || !str_is_digit(rgb[1]) || !str_is_digit(rgb[2]))
+		return (0);
+	if (ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[2]) > 255)
+		return (0);
+	r = ft_convert_base(rgb[0], "0123456789", "0123456789abcdef");
+	g = ft_convert_base(rgb[1], "0123456789", "0123456789abcdef");
+	b = ft_convert_base(rgb[2], "0123456789", "0123456789abcdef");
 	tmp_color = ft_strjoin(r, g);
-	free_string(&tmp_color);
 	color = ft_strjoin(tmp_color, b);
-	tmp_color = ft_convert_base(color, "0123456789abcdefg", "01234567890");
+	free_string(&tmp_color);
+	tmp_color = ft_convert_base(color, "0123456789abcdef", "0123456789");
 	_return = ft_atoi(tmp_color);
 	free_string(&tmp_color);
 	free_string(&color);
@@ -48,7 +49,41 @@ int	check_colors(t_texture_map *textures)
 			rgb = ft_split(argv, ',');
 			textures->color = rgb_transform(rgb, 0);
 			free_strings(rgb);
+			if (textures->color == 0)
+				return (0);
 		}
+		textures = textures->next;
+	}
+	return (1);
+}
+
+int	check_textures_exist(t_texture_map *textures)
+{
+	char	*argv;
+	int		fd;
+
+	while (textures)
+	{
+		argv = textures->argv[1];
+		if (argv[0] == '.')
+		{
+			fd = open(textures->argv[1], O_RDONLY);
+			if (fd == -1)
+				return (0);
+			close(fd);
+			textures->color = TEXTURE;
+		}
+		textures = textures->next;
+	}
+	return (1);
+}
+
+int	last_check_map(t_texture_map *textures)
+{
+	while (textures)
+	{
+		if (textures->color == 0)
+			return (0);
 		textures = textures->next;
 	}
 	return (1);

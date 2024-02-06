@@ -10,7 +10,8 @@ static int	check_f_l_row(int *arr, int *arr2, int size)
 	i = 0;
 	while (i < size)
 	{
-		if ((arr[i] != WALL && arr[i] != EMPTY) || (arr2[i] != WALL && arr2[i] != EMPTY))
+		if ((arr[i] != WALL && arr[i] != EMPTY) || \
+			(arr2[i] != WALL && arr2[i] != EMPTY))
 			return (0);
 		i++;
 	}

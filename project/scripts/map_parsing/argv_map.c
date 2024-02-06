@@ -33,7 +33,7 @@ void	*make_argv(int fd)
 	char		*arg;
 	t_argv_map	*args;
 
-	arg = get_next_line(fd);
+	arg = del_symbl(get_next_line(fd), "\n");
 	args = new_args(arg);
 	if (!args)
 		return ((void *)args);
