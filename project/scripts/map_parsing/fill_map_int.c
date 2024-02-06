@@ -1,17 +1,34 @@
 #include "../../headers/map.h"
+#include "../../headers/map_id.h"
 #include "../../headers/string_work.h"
 #include "../../headers/map_id.h"
 #include "stdlib.h"
 
 static int	return_index(t_texture_map *texture, char letter)
 {
+	static int	hero = 0;
+	char		*str;
+
+	str = texture->argv[0];
 	while (texture)
 	{
-		if (texture->argv[0][0] == letter)
+		if (!ft_strcmp("NO", str) || !ft_strcmp("SO", str))
+		{
+			if (hero++ == 1)
+				return (ERRMAP);
+			return (HERO);
+		}
+		if (!ft_strcmp("EA", str) || !ft_strcmp("WE", str))
+		{
+			if (hero++ == 1)
+				return (ERRMAP);
+			return (HERO);
+		}
+		if (str[0] == letter)
 			return (texture->index);
 		texture = texture->next;
 	}
-	return (-2);
+	return (ERRMAP);
 }
 
 static int	convert(t_list_int *list, t_map *map)
