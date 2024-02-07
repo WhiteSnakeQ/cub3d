@@ -29,8 +29,5 @@ int	main(int argc, char **argv)
 		y++;
 	}
 	clean_cub3d(0, NULL);
-	window = mlx_init();
-	escreen = mlx_new_window(window, \
-		400, 400, "some");
 	return (0);
 }

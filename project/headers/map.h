@@ -4,6 +4,9 @@
 # include "lists.h"
 # include "argv_map.h"
 
+# define WIDTH 900
+# define HEIGHT 1024
+
 typedef struct s_texture_map
 {
 	int						size;
@@ -32,8 +35,8 @@ int			check_colors(t_texture_map *textures);
 int			last_check_map(t_texture_map *textures);
 int			check_textures_exist(t_texture_map *textures);
 
-void		clean_map(t_map **toclean);
-void		clean_t_map_argv(void *argv);
+void		free_map(t_map **toclean);
+void		free_t_map_argv(void *argv);
 void		map_parse(char *f_name, t_map *map);
 void		*make_argv(int fd);
 

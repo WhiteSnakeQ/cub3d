@@ -88,7 +88,7 @@ void	map_parse(char *f_name, t_map *map)
 		emergency_exit_map(SAMETEXTURE, argv);
 	if (!fill_map_int(&argv, map))
 		emergency_exit_map(MALLFAIL, argv);
-	clean_t_map_argv(argv);
+	free_t_map_argv(argv);
 	resize_arrays(map->map, map->coll, map->rows);
 	if (!check_array(map))
 		emergency_exit_cub3d(INVMAP);

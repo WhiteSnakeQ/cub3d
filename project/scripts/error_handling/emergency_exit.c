@@ -11,6 +11,6 @@ int	emergency_exit_cub3d(char *message)
 
 void	emergency_exit_map(char *message, void *argv)
 {
-	clean_t_map_argv(argv);
+	free_t_map_argv(argv);
 	emergency_exit_cub3d(message);
 }

@@ -56,9 +56,17 @@ SRC_CLEAN	= 	clean_cub3d.c \
 DIR_CLEAN	=	./scripts/cleaning/
 OBJ_CLEAN	=	${addprefix ${DIR_CLEAN}, ${SRC_CLEAN:.c=.o}}
 
+SRC_MINMAP	= 	operate.c
+DIR_MINMAP	=	./scripts/minimap/
+OBJ_MINMAP	=	${addprefix ${DIR_MINMAP}, ${SRC_MINMAP:.c=.o}}
+
+SRC_ENV	= 	init_env.c
+DIR_ENV	=	./scripts/env/
+OBJ_ENV	=	${addprefix ${DIR_ENV}, ${SRC_ENV:.c=.o}}
+
 
 ALLOBJ		=	${OBJ_CLEAN} ${OBJ_CUB3} ${OBJ_ERROR} ${OBJ_INIT} ${OBJ_MAPP} ${OBJ_STR} \
-				${OBJ_GNL} ${OBJ_FPR} 
+				${OBJ_GNL} ${OBJ_FPR} ${OBJ_MINMAP} ${OBJ_ENV}
 
 NAME		=	cub3d
 

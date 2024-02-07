@@ -4,7 +4,7 @@
 
 #include "../../headers/ft_printf.h"
 
-void	clean_t_map_argv(void *argv)
+void	free_t_map_argv(void *argv)
 {
 	t_argv_map	*next;
 	t_argv_map	*curr;

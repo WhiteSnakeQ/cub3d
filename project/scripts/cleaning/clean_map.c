@@ -33,7 +33,7 @@ static void	free_textur_list(t_texture_map *list)
 	}
 }
 
-void	clean_map(t_map **toclean)
+void	free_map(t_map **toclean)
 {
 	t_map	*map;
 
