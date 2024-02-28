@@ -12,7 +12,7 @@ void	clean_cub3d(int mod, t_cub3d **toclean)
 		cub3d = *toclean;
 		return ;
 	}
-	free_map(&cub3d->map);
+	free_map(&cub3d->map, cub3d->env->window);
 	free_minimap(&cub3d->minimap);
 	free_env(&cub3d->env);
 	free_hero(&cub3d->hero);

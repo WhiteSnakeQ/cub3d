@@ -1,5 +1,6 @@
 #include "../../../headers/settings.h"
 #include "../../../headers/errors.h"
+#include "../../../headers/key.h"
 
 int	close_program(void *param)
 {
@@ -11,37 +12,41 @@ int	close_program(void *param)
 
 int	mouse_move(int x, int y, t_cub3d *cub)
 {
-	(void)cub;
-	ft_printf(2, "%d %d mouse_move\n", x, y);
-	return (1);
-}
+	static float	oldx = 0;
+	float			newx;
 
-int	mouse_down(int key, int x, int y, t_cub3d *cub)
-{
+	if (oldx == 0)
+	{
+		oldx = x;
+		return (0);
+	}
+	newx = oldx - x;
+	rotate_hero(0, NULL, newx * 0.005);
 	(void)cub;
-	ft_printf(2, "key %d %d %d mouse_down\n", key, x, y);
-	return (1);
-}
-
-int	mouse_up(int key, int x, int y, t_cub3d *cub)
-{
-	(void)cub;
-	ft_printf(2, "key %d %d %d mouse_up\n", key, x, y);
-	return (1);
+	(void)y;
+	oldx = x;
+	return (0);
 }
 
 int	modify_points(int key, void *param)
 {
 	(void)param;
-	ft_printf(2, "%d butt\n", key);
+	if (key == ESC)
+		close_program(NULL);
+	if (key == W_BUTTON)
+		move_hero(0.05, NULL);
+	else if (key == S_BUTTON)
+		move_hero(-0.05, NULL);
+	else if (key == D_BUTTON || key == RA_BUTTON)
+		rotate_hero(1, NULL, 0.04);
+	else if (key == A_BUTTON || key == LA_BUTTON)
+		rotate_hero(-1, NULL, 0.04);
 	return (1);
 }
 
-void	key_setup(t_env *env)
+void	key_setup(t_cub3d *cub)
 {
-	mlx_hook(env->screen, 2, 0, &modify_points, env);	
-	mlx_hook(env->screen, 4, 0, &mouse_down, env);
-	mlx_hook(env->screen, 5, 0, &mouse_up, env);
-	mlx_hook(env->screen, 6, 0, &mouse_move, env);
-	mlx_hook(env->screen, 17, 0, &close_program, NULL);
+	mlx_hook(cub->env->screen, 2, 0, &modify_points, cub);
+	mlx_hook(cub->env->screen, 6, 0, &mouse_move, cub);
+	mlx_hook(cub->env->screen, 17, 0, &close_program, NULL);
 }

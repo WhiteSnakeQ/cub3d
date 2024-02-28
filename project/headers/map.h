@@ -3,15 +3,18 @@
 
 # include "lists.h"
 # include "argv_map.h"
+# include "env.h"
 
-# define WIDTH 1780
-# define HEIGHT 900
+# define WIDTH 1366
+# define HEIGHT 768
 
 typedef struct s_texture_map
 {
 	int						size;
 	int						index;
 	int						color;
+	void					*image;
+	char					*image_str;
 	char					**argv;
 	struct s_texture_map	*next;
 }				t_texture_map;
@@ -33,11 +36,11 @@ int			check_map_texture(t_texture_map *textures);
 int			check_required_texture(t_texture_map *textures);
 int			check_colors(t_texture_map *textures);
 int			last_check_map(t_texture_map *textures);
-int			check_textures_exist(t_texture_map *textures);
+int			check_textures_exist(t_texture_map *textures, t_env *env);
 
-void		free_map(t_map **toclean);
+void		free_map(t_map **toclean, void *ptr);
 void		free_t_map_argv(void *argv);
-void		map_parse(char *f_name, t_map *map);
+void		map_parse(char *f_name, t_map *map, t_env *env);
 void		*make_argv(int fd);
 
 t_list_int	*last_list_int(t_list_int *list);

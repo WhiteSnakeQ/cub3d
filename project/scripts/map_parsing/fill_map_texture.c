@@ -30,6 +30,8 @@ static t_texture_map	*new_texture_name(t_argv_map *argv, int index)
 	new->color = 0;
 	new->index = index;
 	new->next = NULL;
+	new->image = NULL;
+	new->image_str = NULL;
 	return (new);
 }
 

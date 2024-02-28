@@ -16,5 +16,6 @@ typedef struct s_cub3d
 
 t_cub3d		*init_cub3d( void );
 void		clean_cub3d(int mod, t_cub3d **toclean);
+float		abs_m(float i);
 
 #endif

@@ -4,6 +4,7 @@
 #include "fcntl.h"
 
 #include "../../headers/ft_printf.h"
+#include "../../headers/mlx.h"
 
 static int	rgb_transform(char **rgb, int _return)
 {
@@ -57,20 +58,28 @@ int	check_colors(t_texture_map *textures)
 	return (1);
 }
 
-int	check_textures_exist(t_texture_map *textures)
+int	check_textures_exist(t_texture_map *textures, t_env *env)
 {
 	char	*argv;
 	int		fd;
+	int		height;
+	int		width;
 
+	height = HEIGHT;
+	width = WIDTH;
 	while (textures)
 	{
 		argv = textures->argv[1];
 		if (argv[0] == '.')
 		{
 			fd = open(textures->argv[1], O_RDONLY);
-			if (fd == -1)
+			if (fd == -1 || !strcmp_back(argv, ".xpm", 4))
 				return (0);
 			close(fd);
+			textures->image = mlx_xpm_file_to_image(env->window, \
+				textures->argv[1], &width, &height);
+			textures->image_str = \
+				mlx_get_data_addr(textures->image, &fd, &fd, &fd);
 			textures->color = TEXTURE;
 		}
 		textures = textures->next;

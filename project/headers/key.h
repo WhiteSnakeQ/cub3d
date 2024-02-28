@@ -15,13 +15,12 @@
 # define D_BUTTON 2
 # define S_BUTTON 1
 # define A_BUTTON 0
+# define LA_BUTTON 123
+# define RA_BUTTON 124
 
 # define MOUSE_LEFT 1
 # define MOUSE_RIGHT 2
-# define MOUSE_MIDDLE 3
-# define WHEEL_UP 4
-# define WHEEL_DOWN 5
 
-void	key_setup(t_env *env);
+void	key_setup(t_cub3d *cub);
 
 #endif

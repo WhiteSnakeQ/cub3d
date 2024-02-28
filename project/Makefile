@@ -102,7 +102,7 @@ all:		${NAME}
 			${GCC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${ALLOBJ}
-			${GCC} ${CFLAGS} ${ALLOBJ} -o ${NAME}  ./scripts/minilibx/libmlx_Linux.a  -lXext -lX11 -lm -L./scripts/minilibx -lmlx
+			${GCC} ${CFLAGS} ${ALLOBJ} -o ${NAME} ./scripts/minilibx/libmlx.a -lXext -lX11 -lm -L./scripts/minilibx -lmlx
 
 miniib:		
 			@${MAKE} -C ./scripts/minilibx/

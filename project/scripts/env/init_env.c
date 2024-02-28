@@ -7,7 +7,7 @@ static void	emergency_clean(t_env *env, int stage)
 {
 	if (stage == 0)
 	{
-		mlx_destroy_display(env->window);
+		// mlx_destroy_display(env->window);
 		free(env->window);
 		free(env);
 		emergency_exit_cub3d(MALLFAIL);
@@ -15,7 +15,7 @@ static void	emergency_clean(t_env *env, int stage)
 	else if (stage == 1)
 	{
 		mlx_destroy_window(env->window, env->screen);
-		mlx_destroy_display(env->window);
+		// mlx_destroy_display(env->window);
 		free(env->window);
 		free(env);
 		emergency_exit_cub3d(MALLFAIL);
@@ -69,7 +69,7 @@ void	free_env(t_env **env)
 		mlx_destroy_window(clean->window, clean->screen);
 	if (clean->window)
 	{
-		mlx_destroy_display(clean->window);
+		// mlx_destroy_display(clean->window);
 		free(clean->window);
 	}
 	free(clean);

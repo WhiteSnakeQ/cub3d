@@ -73,7 +73,7 @@ static int	check_array(t_map *map)
 	return (1);
 }
 
-void	map_parse(char *f_name, t_map *map)
+void	map_parse(char *f_name, t_map *map, t_env *env)
 {
 	int			fd;
 	void		*argv;
@@ -96,7 +96,7 @@ void	map_parse(char *f_name, t_map *map)
 		emergency_exit_cub3d(NCLOSE);
 	if (!check_colors(map->textures_names))
 		emergency_exit_cub3d(INVCOLOR);
-	if (!check_textures_exist(map->textures_names))
+	if (!check_textures_exist(map->textures_names, env))
 		emergency_exit_cub3d(UNEXTEXTURE);
 	if (!last_check_map(map->textures_names))
 		emergency_exit_cub3d(UNRECTEXTURE);
